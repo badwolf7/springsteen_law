@@ -1,0 +1,70 @@
+//----- COLORS -----//
+$black: #1F1F20
+$blackRGB: 31,31,32
+$blue: #2B4C7E
+$blueRGB: 43,76,126
+$accent: #567EBB
+$accentRGB: 86,126,187
+$gray: #606D80
+$grayRGB: 96,109,128
+$white: #DCE0E6
+$whiteRGB: 220,224,230
+
+//----- TEXT/BG COLORS -----//
+$textBlack: #141823
+$snowWhite: #FFFAFA
+
+//----- SOCIAL COLORS -----//
+// https://simpleicons.org/
+$facebook: #3B5998
+$google-plus: #D34836
+$twitter: #4099FF
+
+// Fonts 
+$josefin: 'Josefin Sans', sans-serif
+$lato: 'Lato', sans-serif
+$merriweather: 'Merriweather', serif
+
+//---------- MEASUREMENTS ----------//
+// BOOTSTRAP
+$sm: 760px
+$md: 995px
+$lg: 1170px
+
+//---------- IMPORTS ----------//
+@import attorneys
+@import consultation
+@import contact
+@import footer
+@import header
+@import landing
+
+
+// Content
+h1,h2,h3,h4,h5,h6
+	font-family: $josefin
+	font-weight: 800
+p
+	font-family: $lato
+	font-size: 1.2em
+a
+	color: $textBlack
+	text-decoration: none
+	&:hover
+		color: $textBlack
+		text-decoration: none
+ul
+	list-style: none
+	padding: 0
+
+html
+	max-width: 100%
+	width: 100%
+body
+	background: $snowWhite
+	max-width: 100%
+	width: 100%
+	overflow-x: hidden
+main
+	margin-top: 100px
+	margin-bottom: 25px

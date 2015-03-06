@@ -1,0 +1,63 @@
+#landing
+	section
+		&:first-child
+			height: 500px
+			width: 100%
+			background: url("../images/sky.jpg")
+			background-repeat: no-repeat
+			background-size: 112% 108%
+			background-position: 410%
+			box-shadow: inset 2px 0 3px 1px rgba(22,22,22,.6)
+
+			img:first-child
+				height: 98%
+				position: relative
+				top: 2%
+				left: 13%
+
+			article
+				background: $white
+				padding: 150px 0
+				h2
+					line-height: 40px
+				h3
+					line-height: 35px
+		&:nth-child(2)
+			&.col-xs-12, article
+				padding: 0 !important
+			
+			article
+				position: relative
+				height: 500px
+				overflow: hidden
+
+				h2
+					margin-top: 150px
+					margin-bottom: 30px
+					padding-bottom: 10px
+					border-bottom: 3px solid $accent
+				h3
+					line-height: 35px
+				p
+					line-height: 24px
+				h3,p
+					margin-top: 0
+				div
+					height: 100%
+					overflow: hidden
+				img
+					position: absolute
+					top: 0
+					left: 0
+					opacity: .35
+					z-index: -1
+				&:first-child
+					img
+						width: 100%
+				&:nth-child(2)
+					img
+						margin-left: -40px
+						height: 500px
+		&:nth-child(3)
+			clear: both
+			padding: 25px 0

@@ -1,0 +1,62 @@
+header
+	position: fixed
+	top:0
+	z-index: 99
+	width: 100%
+	padding: 15px 0
+	background: $black
+	height: 100px
+	border-bottom: 8px solid $accent
+	box-shadow: 2px 0 3px 1px rgba(22,22,22,.5)
+	.logo
+		svg
+			float: left
+			margin-top: 3px
+			margin-left: 2%
+			height: 75px
+		h1
+			display: none
+
+	nav
+		float: right
+		margin: 45px 2% 0 0
+		ul
+			li
+				float: left
+				margin: 10px 10px 12px
+				a
+					padding: 10px 10px 4px
+					color: $white
+					&:hover
+						color: $white
+						border-bottom: 8px solid $blue
+					&.active
+						border-bottom: 8px solid $gray
+				ul
+					width: 200px
+					margin-top: 12px
+					position: absolute
+					background: $snowWhite
+					box-shadow: 0 2px 2px 0 rgba(31,31,32,.35)
+					visibility: hidden
+					opacity: 0
+					transition: all ease .35s
+
+					li
+						float: none
+						padding: 0
+						margin: 0
+						a
+							display: block
+							padding: 10px 0 10px 10px
+							color: $textBlack
+							&:hover
+								background: rgba(96,109,128,.25)
+								border:none
+								color: $textBlack
+			.practiceAreas
+				&:hover
+					ul
+						visibility: visible
+						opacity: 1
+						z-index: 100
