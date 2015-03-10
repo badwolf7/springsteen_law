@@ -17,9 +17,24 @@ header
 		h1
 			display: none
 
+	.btn
+		margin-right: 15px
+		border-radius: 2px
+		background: $blue
+		color: $white
+		&:hover, &:active
+			background: $accent
+			color: $white
+		&[href="/logout"]
+			background: none
+			transition: box-shadow .25s ease
+			&:hover
+				box-shadow: 0 0 3px 0 rgba(220,224,230,.5)
+
 	nav
 		float: right
-		margin: 45px 2% 0 0
+		clear: right
+		margin-top: 14px
 		ul
 			li
 				float: left

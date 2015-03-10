@@ -26,22 +26,34 @@
 	<body>
 		<div id="wrapper" class="wrapper">
 			<header class="upper">
+				<% if(!user.active){ %>
 				<a href="/" class="logo">
 					<% include logo %>
 					<h1>Springsteen Law</h1>
 				</a>
+				<button type="button" class="btn col-md-2 pull-right" data-toggle="modal" data-target="#login-modal">Login</button>
+				<% }else{ %>
+				<a href="/user/dash" class="logo">
+					<% include logo %>
+					<h1>Springsteen Law</h1>
+				</a>
+				<a href="/logout" class="btn col-md-1 pull-right">Logout</a>
+				<% } %>
 				<nav>
 					<ul>
 						<li><a href="/">Home</a></li>
+						<% if(user.active){ %>
+						<li><a href="/user/dash">Dashboard</a></li>
+						<% } %>
 						<li><a href="/consultation">Consultation</a></li>
 						<li class="practiceAreas">
-							<a href="">Practice Areas <span class="caret"></span></a>
+							<a href="/practice-areas">Practice Areas <span class="caret"></span></a>
 							<ul>
-								<li><a href="">DUI / DWI</a></li>
-								<li><a href="">First Offender Programs</a></li>
-								<li><a href="">Immigration</a></li>
-								<li><a href="">Expungements</a></li>
-								<li><a href="">Traffic</a></li>
+								<li><a href="/dui-dwi">DUI / DWI</a></li>
+								<li><a href="/first-offender">First Offender Programs</a></li>
+								<li><a href="/immigration">Immigration</a></li>
+								<li><a href="/expungements">Expungements</a></li>
+								<li><a href="/traffic">Traffic</a></li>
 							</ul>
 						</li>
 						<li><a href="/attorneys">Attorneys</a></li>
@@ -65,6 +77,37 @@
 				<i class="fa fa-envelope-o"></i> <a href="mailto:springsteen@springsteenlawoffice.com">springsteen@springsteenlawoffice.com</a></p>
 			</section>
 		</footer>
+
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Login</h4>
+					</div>
+					<div class="modal-body">
+						<% if(message != '' && message != undefined){ %>
+						<p class="loginmsg text-danger"><%= message %></p>
+						<% } %>
+						<form role="form" method="get" action="/login">
+							<ul>
+								<li class="form-group">
+									<label for="login[user]">User</label>
+									<input id="login[user]" name="login[user]" type="text" class="form-control" placeholder="User">
+								</li>
+								<li class="form-group">
+									<label for="login[pass]">User</label>
+									<input id="login[pass]" name="login[pass]" type="password" class="form-control" placeholder="Password">
+								</li>
+							</ul>
+							<button type="submit" class="btn btn-default col-xs-8 col-sm-6 col-md-4 pull-right">Login</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css">

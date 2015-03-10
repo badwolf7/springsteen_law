@@ -16,6 +16,9 @@
     "express-session": "^1.10.1",
     "http": "0.0.0",
     "mocha": "^2.1.0",
+    "moment": "^2.9.0",
+    "mongodb": "^1.4.34",
+    "sha1": "^1.1.0",
     "should": "^4.6.1",
     "sitemap": "^0.7.4",
     "supertest": "^0.15.0"
