@@ -65,7 +65,11 @@ module.exports = function(){
 				res.redirect('/');
 			}
 		}else{
-			res.redirect('/');
+			if(req.session.user){
+				res.redirect('/user/dash')
+			}else{
+				res.redirect('/');
+			}
 			// res.render('404');
 		}
 	})

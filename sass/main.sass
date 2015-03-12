@@ -10,6 +10,11 @@ $grayRGB: 96,109,128
 $white: #DCE0E6
 $whiteRGB: 220,224,230
 
+$atlantis: #A8CA3B
+$atlantisRGB: 120,202,59
+$clover: #3D4B12
+$cloverRGB: 61,75,18
+
 //----- TEXT/BG COLORS -----//
 $textBlack: #141823
 $snowWhite: #FFFAFA
@@ -35,6 +40,7 @@ $lg: 1170px
 @import attorneys
 @import consultation
 @import contact
+@import dash
 @import dui-dwi
 @import expungements
 @import first-offender
@@ -84,7 +90,12 @@ article
 .btn
 	transition: background .25s ease
 	outline: none
+.btn, input, textarea
+	border-radius: 2px !important
 .btn:not(.btn-default)
 	border: none
-.modal-footer
-	border: none
+.modal
+	.modal-content
+		border-radius: 3px
+	.modal-footer
+		border: none

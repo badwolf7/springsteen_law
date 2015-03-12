@@ -61,6 +61,7 @@ header
 						float: none
 						padding: 0
 						margin: 0
+						clear: both
 						a
 							display: block
 							padding: 10px 0 10px 10px
@@ -69,7 +70,17 @@ header
 								background: rgba(96,109,128,.25)
 								border:none
 								color: $textBlack
-			.practiceAreas
+						ul
+							padding: 0
+							margin: 0
+							position: inherit
+							box-shadow: none
+							li
+								padding-left: 15px
+			.dropdown
+				&.user
+					ul
+						right: 0
 				&:hover
 					ul
 						visibility: visible

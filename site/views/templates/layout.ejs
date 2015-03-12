@@ -32,13 +32,6 @@
 					<h1>Springsteen Law</h1>
 				</a>
 				<button type="button" class="btn col-md-2 pull-right" data-toggle="modal" data-target="#login-modal">Login</button>
-				<% }else{ %>
-				<a href="/user/dash" class="logo">
-					<% include logo %>
-					<h1>Springsteen Law</h1>
-				</a>
-				<a href="/logout" class="btn col-md-1 pull-right">Logout</a>
-				<% } %>
 				<nav>
 					<ul>
 						<li><a href="/">Home</a></li>
@@ -46,7 +39,7 @@
 						<li><a href="/user/dash">Dashboard</a></li>
 						<% } %>
 						<li><a href="/consultation">Consultation</a></li>
-						<li class="practiceAreas">
+						<li class="dropdown practiceAreas">
 							<a href="/practice-areas">Practice Areas <span class="caret"></span></a>
 							<ul>
 								<li><a href="/dui-dwi">DUI / DWI</a></li>
@@ -60,6 +53,37 @@
 						<li><a href="/contact">Contact</a></li>
 					</ul>
 				</nav>
+				<% }else{ %>
+				<a href="/user/dash" class="logo">
+					<% include logo %>
+					<h1>Springsteen Law</h1>
+				</a>
+				<a href="/logout" class="btn col-md-1 pull-right">Logout</a>
+				<nav>
+					<ul>
+						<li><a href="/user/dash">Dashboard</a></li>
+						<li class="dropdown user">
+							<a href="">Springsteen Law <span class="caret"></span></a>
+							<ul>
+								<li><a href="/">Home</a></li>
+								<li><a href="/consultation">Consultation</a></li>
+								<li class="practiceAreas">
+									<a href="/practice-areas">Practice Areas</a>
+									<ul>
+										<li><a href="/dui-dwi">DUI / DWI</a></li>
+										<li><a href="/first-offender">First Offender Programs</a></li>
+										<li><a href="/immigration">Immigration</a></li>
+										<li><a href="/expungements">Expungements</a></li>
+										<li><a href="/traffic">Traffic</a></li>
+									</ul>
+								</li>
+								<li><a href="/attorneys">Attorneys</a></li>
+								<li><a href="/contact">Contact</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<% } %>
 			</header>
 
 			<%- body %>

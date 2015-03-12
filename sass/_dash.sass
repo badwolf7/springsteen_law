@@ -1,0 +1,104 @@
+#dash
+	padding-top: 10px
+	aside
+		margin-top: 20px
+		box-shadow: -1px 0 3px 0 rgba(1,1,1,.5)
+		@media(max-width:$sm)
+			position: inherit
+		@media(min-width:$sm)
+			position: fixed
+		section
+			ul
+				li
+					margin: 7px 0
+					a
+						display: block
+						padding: 7px 0 7px 7px
+						transition: background .45s ease, color .45s ease
+						font-size: 1.1em
+						font-weight: 500
+						&[href="/user/case-notes"]
+							color: $gray
+							&:hover
+								background: $gray
+								color: $white
+						&[href="/user/docs"]
+							color: $blue
+							&:hover
+								background: $blue
+								color: $white
+						&[href="/user/payments"]
+							color: $clover
+							&:hover
+								background: $atlantis
+						i
+							width: 7%
+			a.text-danger
+				display: inline-block
+				margin-bottom: 20px
+	section
+		section
+			float: left
+			clear: both
+			width: 100%
+			padding-left: 15px
+			&.caseNotes
+				h2
+					color: $gray
+				div
+					// box-shadow: inset 0 0 2px 3px rgba(96,109,128,.25)
+					border-top: 3px solid $gray
+			&.documents
+				h2
+					color: $blue
+				div
+					// box-shadow: inset 0 0 2px 3px rgba(43,76,126,.25)
+					border-top: 3px solid $blue
+			&.payments
+				h2
+					color: $clover
+				div
+					// box-shadow: inset 0 0 2px 3px rgba(120,202,59,.25)
+					border-top: 3px solid $clover
+			div
+				width: 100%
+				height: 400px
+				padding: 0 15px
+				margin-bottom: 13px
+				overflow-y: scroll
+				overflow-x: hidden
+				border: 1px solid rgba(96,109,128,.15)
+				article
+					height: 363px
+					float: left
+					clear: none
+					border-radius: 2px
+					box-shadow: 0 0 3px 0 rgba(22,22,22,.4)
+					margin: 15px 1%
+					padding: 0 1%
+					cursor: pointer
+					transition: box-shadow .5s ease
+					overflow: hidden
+					&:hover
+						box-shadow: 0 0 5px 1px rgba(22,22,22,.9)
+					@media(max-width:$sm)
+						width: 100%
+						margin: 20px auto 10px
+					@media(min-width:$sm)and(max-width:$md)
+						width: 48%
+					@media(min-width:$md)
+						width: 31.3333333333%
+					p
+						font-weight: .8em
+						line-height: 1.4em
+						height: 253px
+						overflow: hidden
+				.preview-default
+					color: rgba(96,109,128,.25)
+					font-size: 2.3em
+					font-weight: 600
+					position: relative
+					top: 45%
+					text-transform: capitalize
+			&:not(:first-child)
+				margin-top: 25px
