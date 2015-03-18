@@ -1,12 +1,56 @@
 window.onload = function(){
+	// Logo Colors
 	$('header svg path[fill="#606D80"]').attr('fill','#DCE0E6');
 	$('footer svg path[fill="#606D80"]').attr('fill','#DCE0E6');
 	$('header svg path[fill="#2B4C7E"]').attr('fill','#567EBB');
 	$('footer svg path[fill="#2B4C7E"]').attr('fill','#567EBB');
 
+	// Login Fail Modal Check
 	if($('.modal .loginmsg').text() != '' && $('.modal .loginmsg').text() != 'Login success'){
 		$('#login-modal').modal('show');
 	}
+	$('.forgot').click(function(){
+		$('#login-modal').modal('hide');
+	});
+
+
+	// NAV
+	function navCheck(){
+		var docWidth = $(document).width();
+		if(docWidth < 995){
+			$('nav.lg').hide();
+			$('nav.sm').show();
+			navHider();
+		}else{
+			$('nav.sm').hide();
+			$('nav.lg').show();
+		}
+	}
+	navCheck();
+
+	var w = $('nav.sm ul.menu').width() + 20;
+	function navHider(){
+		w = $('nav.sm ul.menu').width() + 20;
+		$('nav.sm').css({
+			'margin-right':'-'+w+'px'
+		});
+	}
+
+	$('nav.sm .nav-flag').click(function(){
+		if($('nav.sm').hasClass('in')){
+			$('nav.sm').css({
+				'margin-right':'-'+w+'px'
+			});
+			$('nav.sm').addClass('out');
+			$('nav.sm').removeClass('in');
+		}else{
+			$('nav.sm').css({
+				'margin-right': '0px'
+			});
+			$('nav.sm').addClass('in');
+			$('nav.sm').removeClass('out');
+		}
+	});
 
 	/////////////////////// DASH SIDE NAV
 	/////////////////////////////////////
@@ -19,7 +63,6 @@ window.onload = function(){
 	var catcher = footerTop - heightMin + 29;
 	var screenTop = '';
 	var dashNavLock = footerTop - dashNavHeight - footerHeight - 34;
-	console.log(dashNavLock);
 
 	function windowTop(){
 		screenTop = $(window).scrollTop();
@@ -56,7 +99,6 @@ window.onload = function(){
 			pageName = 'user/'+pageName;
 			break;
 	}
-	console.log(pageName);
 	var current = $("header nav ul li a[href='/"+pageName+"']");
 	current.addClass('active')
 
@@ -92,6 +134,7 @@ window.onload = function(){
 	$(window).resize(function(){
 		positionFooter();
 		windowTop();
+		navCheck();
 	});
 	$(window).scroll(function(){
 		windowTop();

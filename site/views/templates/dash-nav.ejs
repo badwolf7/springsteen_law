@@ -6,6 +6,7 @@
 	<hr>
 	<section>
 		<ul>
+			<% if(user.type == 'client'){ %>
 			<li>
 				<a href="/user/case-notes"><i class="fa fa-book"></i> Case Notes</a>
 			</li>
@@ -15,6 +16,14 @@
 			<li>
 				<a href="/user/payments"><i class="fa fa-dollar"></i> Payments</a>
 			</li>
+			<% }else{ %>
+			<li>
+				<a href="/user/messages"><i class="fa fa-envelope-o"></i> Messages</a>
+			</li>
+			<li>
+				<a href="/admin/users"><i class="fa fa-users"></i> Users</a>
+			</li>
+			<% } %>
 		</ul>
 	</section>
 	<hr>

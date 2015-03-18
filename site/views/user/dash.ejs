@@ -3,9 +3,10 @@
 <main id="dash" class="dash col-xs-12">
 	
 	<% include ../templates/dash-nav %>
-	
+
 	<section class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3">
-		<section class="caseNotes">
+		<% if(user.type == 'client'){ %>
+		<section class="caseNotes user">
 			<h2>Case Notes</h2>
 			<div>
 				<article>
@@ -31,20 +32,63 @@
 			</div>
 			<a href="/user/case-notes" class="pull-right">See More</a>
 		</section>
-		<section class="documents">
+		<section class="documents user">
 			<h2>Documents</h2>
 			<div>
 				<p class="preview-default text-center">You have no documents</p>
 			</div>
 			<a href="/user/docs" class="pull-right">See More</a>
 		</section>
-		<section class="payments">
+		<section class="payments user">
 			<h2>Payments</h2>
 			<div>
 				<p class="preview-default text-center">You have no payments</p>
 			</div>
 			<a href="/user/payments" class="pull-right">See More</a>
 		</section>
+		<% }else{ %>
+		<section class="messages admin">
+			<h2>Messages</h2>
+			<div>
+				<p class="preview-default text-center">No Messages</p>
+			</div>
+		</section>
+		<section class="users admin">
+			<h2>Clients <small><a href=""><i class="fa fa-user-plus"></i> Add Client</a></small></h2>
+			<div>
+				<% if(users_list.length == 0){ %>
+				<p class="preview-default text-center">No Clients</p>
+				<% }else{ %>
+				<% for(var i=0;i<users_list.length;i++){ %>
+				<article class="<%= users_list[i].type %>">
+					<h3><%= users_list[i].name.full %> <small><%= users_list[i].type %></small></h3>
+					<h4 class="text-muted">&#64; <%= users_list[i].username %></h4>
+					<p><%= users_list[i].description %></p>
+					<input type="hidden" class="user_id" value="<%= users_list[i].userId %>">
+					<section class="col-md-4">
+						<p><i class="fa fa-envelope-o"></i> <%= users_list[i].email %></p>
+					</section>
+					<% if(users_list[i].address.home){ %>
+					<section class="col-md-4">
+						<i class="fa fa-home fa-2x" style="vertical-align: top;"></i> 
+						<address style="display:inline-block;"><%= users_list[i].address.home.street1 %><br>
+							<% if(users_list[i].address.home.street2 != ''){ %>
+							<%= users_list[i].address.home.street2 %><br>
+							<% } %>
+							<%= users_list[i].address.home.city %>, <%= users_list[i].address.home.state %> <%= users_list[i].address.home.zip %>
+						</address>
+					</section>
+					<% } %>
+					<section class="col-md-4">
+						<p><i class="fa fa-phone"></i> <%= users_list[i].phone %></p>
+					</section>
+					<p style="visibility:hidden;">.</p>
+				</article>
+				<% }} %>
+			</div>
+			<a href="/admin/users" class="pull-right">See More</a>
+		</section>
+		<% } %>
 	</section>
 
 </main>

@@ -72,6 +72,7 @@ if (cluster.isMaster) {
 	app.use('/views', express.static('/views'));
 	app.use('/views/user', express.static('/views/user'));
 	app.use('/assets', express.static(__dirname + '/assets'));
+	app.use('/public', express.static(__dirname + '/public'));
 	app.use(expressSession({secret: '25054772e4aa4e9ab43f18b1c3ce2299'}));
 
 	// --- Models --- //

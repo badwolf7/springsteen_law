@@ -31,13 +31,23 @@
 							color: $clover
 							&:hover
 								background: $atlantis
+						&[href="/user/messages"]
+							color: $accent
+							&:hover
+								background: $accent
+								color: $white
+						&[href="/admin/users"]
+							color: $gray
+							&:hover
+								background: $gray
+								color: $white
 						i
 							width: 7%
 			a.text-danger
 				display: inline-block
 				margin-bottom: 20px
-	section
-		section
+	section.col-xs-12
+		section.admin, section.user
 			float: left
 			clear: both
 			width: 100%
@@ -60,6 +70,34 @@
 				div
 					// box-shadow: inset 0 0 2px 3px rgba(120,202,59,.25)
 					border-top: 3px solid $clover
+			&.messages
+				h2
+					color: $accent
+				div
+					// box-shadow: inset 0 0 2px 3px rgba(120,202,59,.25)
+					border-top: 3px solid $accent
+			&.users
+				h2
+					color: $gray
+					small
+						margin-left: 25px
+						a
+							padding: 3px 6px
+							padding-left: 0
+							border-radius: 20px 2px 2px 20px
+							transition: background .25s ease
+							.fa
+								border-radius: 50%
+								padding: 10px 8px 10px 9px
+								transition: background .25s ease, color .23s ease
+							&:hover
+								background: $white
+								.fa
+									color: $snowWhite
+									background: $atlantis
+
+				div
+					border-top: 3px solid $gray
 			div
 				width: 100%
 				height: 400px
@@ -68,37 +106,50 @@
 				overflow-y: scroll
 				overflow-x: hidden
 				border: 1px solid rgba(96,109,128,.15)
-				article
-					height: 363px
-					float: left
-					clear: none
-					border-radius: 2px
-					box-shadow: 0 0 3px 0 rgba(22,22,22,.4)
-					margin: 15px 1%
-					padding: 0 1%
-					cursor: pointer
-					transition: box-shadow .5s ease
-					overflow: hidden
-					&:hover
-						box-shadow: 0 0 5px 1px rgba(22,22,22,.9)
-					@media(max-width:$sm)
-						width: 100%
-						margin: 20px auto 10px
-					@media(min-width:$sm)and(max-width:$md)
-						width: 48%
-					@media(min-width:$md)
-						width: 31.3333333333%
-					p
-						font-weight: .8em
-						line-height: 1.4em
-						height: 253px
+			&.user
+				div
+					article
+						height: 363px
+						float: left
+						clear: none
+						border-radius: 2px
+						box-shadow: 0 0 3px 0 rgba(22,22,22,.4)
+						margin: 15px 1%
+						padding: 0 1%
+						cursor: pointer
+						transition: box-shadow .5s ease
 						overflow: hidden
-				.preview-default
-					color: rgba(96,109,128,.25)
-					font-size: 2.3em
-					font-weight: 600
-					position: relative
-					top: 45%
-					text-transform: capitalize
-			&:not(:first-child)
-				margin-top: 25px
+						&:hover
+							box-shadow: 0 0 5px 1px rgba(22,22,22,.9)
+						@media(max-width:$sm)
+							width: 100%
+							margin: 20px auto 10px
+						@media(min-width:$sm)and(max-width:$md)
+							width: 48%
+						@media(min-width:$md)
+							width: 31.3333333333%
+						p
+							font-weight: .8em
+							line-height: 1.4em
+							height: 253px
+							overflow: hidden
+				&:not(:first-child)
+					margin-top: 25px
+			&.admin
+				div
+					article
+						width: 100%
+						box-shadow: 0 1px 3px 0 rgba(22,22,22,.22)
+						padding: 2px 7px
+						margin: 7px 0
+						cursor: pointer
+						transition: box-shadow .5s ease
+						&:hover
+							box-shadow: 0 0 5px 1px rgba(22,22,22,.9)
+			.preview-default
+				color: rgba(96,109,128,.25)
+				font-size: 2.3em
+				font-weight: 600
+				position: relative
+				top: 45%
+				text-transform: capitalize

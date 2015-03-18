@@ -13,12 +13,14 @@ header
 			float: left
 			margin-top: 3px
 			margin-left: 2%
-			height: 75px
+			max-height: 75px
+			max-width: 75%
 		h1
 			display: none
 
 	.btn
 		margin-right: 15px
+		margin-bottom: 5px
 		border-radius: 2px
 		background: $blue
 		color: $white
@@ -31,11 +33,13 @@ header
 			&:hover
 				box-shadow: 0 0 3px 0 rgba(220,224,230,.5)
 
-	nav
+	nav.lg
 		float: right
 		clear: right
-		margin-top: 14px
+		margin-top: 9px
 		ul
+			float: right
+			clear: right
 			li
 				float: left
 				margin: 10px 10px 12px
@@ -86,3 +90,45 @@ header
 						visibility: visible
 						opacity: 1
 						z-index: 100
+
+	nav.sm
+		position: fixed
+		right: 0
+		z-index: 99
+		transition: margin .25s ease
+		ul, div
+			float: right
+		.nav-flag
+			background: $blue
+			color: $white
+			font-size: 2em
+			padding: 10px 15px
+			cursor: pointer
+			transition: background .5s ease
+			&:hover
+				background: $accent 
+		ul
+			padding: 10px 15px 10px 5px
+			background: $white
+			box-shadow: 0 1px 3px 0 rgba(22,22,22,.22)
+			li
+				float: left
+				clear: left
+				width: 100%
+				a
+					font-size: 1.2em
+					font-weight: 400
+					display: block
+					padding: 8px 10px
+					margin: 2px 0
+					transition: background .25s ease, color .25s ease
+					&:hover
+						background: $gray
+						color: $white
+				ul
+					box-shadow: none
+					clear: left
+					padding: 0
+					li
+						a
+							padding-left: 20px

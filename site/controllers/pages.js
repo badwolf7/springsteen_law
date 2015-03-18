@@ -34,7 +34,7 @@ module.exports = function(){
 	//	Define root route action
 	app.get('/',function(req, res){
 		loginFailMsg(req,res);
-
+		
 		res.render('index', {message: req.session.msg, user: req.session.user});
 	});
 
@@ -46,7 +46,7 @@ module.exports = function(){
 		console.log(req.session.user);
 
 		if(fs.existsSync('views/' + req.params.page + '.ejs')){
-			res.render(req.params.page, {message: req.session.msg, user: req.session.user});
+			res.render(req.params.page, {message: req.session.msg, user: req.session.user, users_list: ''});
 		}else{
 			res.redirect('/');
 			// res.render('404');
@@ -57,7 +57,11 @@ module.exports = function(){
 		if(fs.existsSync('views/user/' + req.params.page + '.ejs')){
 			if(req.session.user){
 				if(req.session.user.active === 1){
-					res.render('user/'+req.params.page, {message: req.session.msg, user: req.session.user});
+					if(req.session.user.type == 'user'){
+						res.render('user/'+req.params.page, {message: req.session.msg, user: req.session.user, users_list: ''});
+					}else{
+						res.render('user/'+req.params.page, {message: req.session.msg, user: req.session.user, users_list: req.session.users_list});
+					}
 				}else{
 					res.redirect('/');
 				}

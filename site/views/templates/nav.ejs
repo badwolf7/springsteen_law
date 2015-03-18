@@ -1,0 +1,22 @@
+<nav class="lg">
+	<button type="button" class="btn col-md-3 pull-right" data-toggle="modal" data-target="#login-modal">Login</button>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<% if(user.active){ %>
+		<li><a href="/user/dash">Dashboard</a></li>
+		<% } %>
+		<li><a href="/consultation">Consultation</a></li>
+		<li class="dropdown practiceAreas">
+			<a href="/practice-areas">Practice Areas <span class="caret"></span></a>
+			<ul>
+				<li><a href="/dui-dwi">DUI / DWI</a></li>
+				<li><a href="/first-offender">First Offender Programs</a></li>
+				<li><a href="/immigration">Immigration</a></li>
+				<li><a href="/expungements">Expungements</a></li>
+				<li><a href="/traffic">Traffic</a></li>
+			</ul>
+		</li>
+		<li><a href="/attorneys">Attorneys</a></li>
+		<li><a href="/contact">Contact</a></li>
+	</ul>
+</nav>

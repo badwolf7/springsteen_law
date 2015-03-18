@@ -6,7 +6,7 @@
 
 	<!-- CSS -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/assets/font-awesome-4.2.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/assets/font-awesome-4.3.0/css/font-awesome.min.css">
 
 	<!-- Favicon -->
 		<link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
@@ -31,35 +31,15 @@
 					<% include logo %>
 					<h1>Springsteen Law</h1>
 				</a>
-				<button type="button" class="btn col-md-2 pull-right" data-toggle="modal" data-target="#login-modal">Login</button>
-				<nav>
-					<ul>
-						<li><a href="/">Home</a></li>
-						<% if(user.active){ %>
-						<li><a href="/user/dash">Dashboard</a></li>
-						<% } %>
-						<li><a href="/consultation">Consultation</a></li>
-						<li class="dropdown practiceAreas">
-							<a href="/practice-areas">Practice Areas <span class="caret"></span></a>
-							<ul>
-								<li><a href="/dui-dwi">DUI / DWI</a></li>
-								<li><a href="/first-offender">First Offender Programs</a></li>
-								<li><a href="/immigration">Immigration</a></li>
-								<li><a href="/expungements">Expungements</a></li>
-								<li><a href="/traffic">Traffic</a></li>
-							</ul>
-						</li>
-						<li><a href="/attorneys">Attorneys</a></li>
-						<li><a href="/contact">Contact</a></li>
-					</ul>
-				</nav>
+				<% include nav-sm %>
+				<% include nav %>
 				<% }else{ %>
 				<a href="/user/dash" class="logo">
 					<% include logo %>
 					<h1>Springsteen Law</h1>
 				</a>
 				<a href="/logout" class="btn col-md-1 pull-right">Logout</a>
-				<nav>
+				<nav class="lg">
 					<ul>
 						<li><a href="/user/dash">Dashboard</a></li>
 						<li class="dropdown user">
@@ -116,15 +96,40 @@
 						<form role="form" method="get" action="/login">
 							<ul>
 								<li class="form-group">
-									<label for="login[user]">User</label>
-									<input id="login[user]" name="login[user]" type="text" class="form-control" placeholder="User">
+									<label for="login[user]">Username</label>
+									<input id="login[user]" name="login[user]" type="user" class="form-control" placeholder="example@mail.com">
 								</li>
 								<li class="form-group">
-									<label for="login[pass]">User</label>
+									<label for="login[pass]">Password</label>
 									<input id="login[pass]" name="login[pass]" type="password" class="form-control" placeholder="Password">
+									<p class="pull-right"><a href="" class="forgot" data-toggle="modal" data-target="#forgot-modal">Forgot Password</a></p>
 								</li>
 							</ul>
 							<button type="submit" class="btn btn-default col-xs-8 col-sm-6 col-md-4 pull-right">Login</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="forgot-modal" tabindex="-1" role="dialog" aria-labelledby="forgot-modal" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Forgot Password</h4>
+						<p><small>If you provide your email we'll send you a new temporary password</small></p>
+					</div>
+					<div class="modal-body">
+						<form role="form" method="get" action="/forgot/password">
+							<ul>
+								<li class="form-group">
+									<label for="forgot[email]">Email</label>
+									<input id="forgot[email]" name="forgot[email]" type="text" class="form-control" placeholder="example@mail.com">
+								</li>
+							</ul>
+							<button type="submit" class="btn btn-default col-xs-8 col-sm-6 col-md-4 pull-right">Get New Password</button>
 						</form>
 					</div>
 					<div class="modal-footer">
