@@ -13,6 +13,10 @@ window.onload = function(){
 		$('#login-modal').modal('hide');
 	});
 
+	if($('#dash').hasClass('user-dash')){
+		var dateTime = new Date($('.dateTime').text());
+		$('.dateTime').text(dateTime);
+	}
 
 	// NAV
 	function navCheck(){

@@ -11,7 +11,6 @@ var ajax = function(){
 			uId: userId,
 			cUser: currentUser
 		}
-		$('.data').html('');
 		getUser(data);
 	});
 	function getUser(data){

@@ -1,6 +1,6 @@
 <% layout('../templates/layout') -%>
 
-<main id="dash" class="dash col-xs-12">
+<main id="dash" class="user-dash col-xs-12">
 	
 	<% include ../templates/dash-nav %>
 
@@ -9,6 +9,7 @@
 		<section class="user admin">
 			<h2><%= userInfo.name.full %></h2>
 			<h4 class="text-muted">&#64; <%= userInfo.username %></h4>
+			<p><small>Last Online - <span class="dateTime"><%= userInfo.lastAccess %></span></small></p>
 			<div class="well">
 				<p><%= userInfo.description %></p>
 			</div>

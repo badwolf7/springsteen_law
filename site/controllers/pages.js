@@ -80,9 +80,15 @@ module.exports = function(){
 	app.get('/admin/:page', function(req,res){
 		if(fs.existsSync('views/admin/' + req.params.page + '.ejs')){
 			if(req.params.page == 'user'){
-				req.session.msg = 'Login success';
-				res.render('admin/'+req.params.page, {message: req.session.msg, user: req.session.user, userInfo: req.session.userInfo});
+				if(req.session.userInfo){
+					req.session.msg = 'Login success';
+					res.render('admin/'+req.params.page, {message: req.session.msg, user: req.session.user, userInfo: req.session.userInfo});
+				}else{
+					res.redirect('/');
+				}
 			}
+		}else{
+			res.redirect('/');
 		}
 	});
 }

@@ -32,7 +32,7 @@ module.exports = function(){
 		MongoClient.connect('mongodb://127.0.0.1:27017/springsteen-law', function(err, db){
 			if(err) throw err;
 			var collection = db.collection('users');
-			collection.find({"username":user,"password":hash}).toArray(function(err, user){
+			collection.findAndModify({"username":user,"password":hash}, {}, {$set:{lastAccess:now}}, {}, function(err, user){
 				if(err) throw err;
 				if(user.length == 0){
 					req.session.msg = "Login information not found";
@@ -44,7 +44,7 @@ module.exports = function(){
 					req.session.loginFail = 0;
 					console.log("||=====================----------------------> Users:")
 					console.log(user);
-					req.session.user = user[0];
+					req.session.user = user;
 					console.log('');
 					console.log('');
 					console.log(req.session.user);
@@ -60,6 +60,7 @@ module.exports = function(){
 	app.get('/logout',function(req,res){
 		req.session.user = {};
 		req.session.user.active = 0;
+		req.session.msg = '';
 		res.redirect('/user/dash');
 	})
 }
