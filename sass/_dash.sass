@@ -98,7 +98,7 @@
 
 				div
 					border-top: 3px solid $gray
-			div
+			div:not(.well)
 				width: 100%
 				height: 400px
 				padding: 0 15px
@@ -106,6 +106,14 @@
 				overflow-y: scroll
 				overflow-x: hidden
 				border: 1px solid rgba(96,109,128,.15)
+				&::-webkit-scrollbar
+					-webkit-appearance: none
+					width: 7px
+					box-shadow: 0 -1px 2px 0 rgba(22,22,22,.22)
+				&::-webkit-scrollbar-thumb
+					border-radius: 0
+					background-color: rgba(43,76,126,.5)
+					-webkit-box-shadow: 0 0 1px rgba(86,126,187,.5)
 			&.user
 				div
 					article
@@ -146,6 +154,7 @@
 						transition: box-shadow .5s ease
 						&:hover
 							box-shadow: 0 0 5px 1px rgba(22,22,22,.9)
+
 			.preview-default
 				color: rgba(96,109,128,.25)
 				font-size: 2.3em

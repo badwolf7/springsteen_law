@@ -1,0 +1,37 @@
+<% layout('../templates/layout') -%>
+
+<main id="dash" class="dash col-xs-12">
+	
+	<% include ../templates/dash-nav %>
+
+	<section class="data col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3">
+		<a href="/user/dash"><i class="fa fa-arrow-left"></i>Back</a>
+		<section class="user admin">
+			<h2><%= userInfo.name.full %></h2>
+			<h4 class="text-muted">&#64; <%= userInfo.username %></h4>
+			<div class="well">
+				<p><%= userInfo.description %></p>
+			</div>
+			<input type="hidden" class="user_id" value="<%= userInfo.userId %>">
+			<section class="col-md-4">
+				<p><i class="fa fa-envelope-o"></i> <%= userInfo.email %></p>
+			</section>
+			<% if(userInfo.address.home){ %>
+			<section class="col-md-4">
+				<i class="fa fa-home fa-2x" style="vertical-align: top;"></i> 
+				<address style="display:inline-block;"><%= userInfo.address.home.street1 %><br>
+					<% if(userInfo.address.home.street2 != ''){ %>
+					<%= userInfo.address.home.street2 %><br>
+					<% } %>
+					<%= userInfo.address.home.city %>, <%= userInfo.address.home.state %> <%= userInfo.address.home.zip %>
+				</address>
+			</section>
+			<% } %>
+			<section class="col-md-4">
+				<p><i class="fa fa-phone"></i> <%= userInfo.phone %></p>
+			</section>
+			<p style="visibility:hidden;">.</p>
+		</section>
+	</section>
+
+</main>

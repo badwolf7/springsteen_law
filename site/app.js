@@ -71,9 +71,10 @@ if (cluster.isMaster) {
 	app.set('view engine', 'ejs');
 	app.use('/views', express.static('/views'));
 	app.use('/views/user', express.static('/views/user'));
+	app.use('/views/user', express.static('/views/admin'));
 	app.use('/assets', express.static(__dirname + '/assets'));
 	app.use('/public', express.static(__dirname + '/public'));
-	app.use(expressSession({secret: '25054772e4aa4e9ab43f18b1c3ce2299'}));
+	app.use(expressSession({secret: '25054772e4aa4e9ab43f18b1c3ce2299', maxAge: 31536000000}));
 
 	// --- Models --- //
 	app.models = {};

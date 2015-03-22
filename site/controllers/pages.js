@@ -77,4 +77,12 @@ module.exports = function(){
 			// res.render('404');
 		}
 	})
+	app.get('/admin/:page', function(req,res){
+		if(fs.existsSync('views/admin/' + req.params.page + '.ejs')){
+			if(req.params.page == 'user'){
+				req.session.msg = 'Login success';
+				res.render('admin/'+req.params.page, {message: req.session.msg, user: req.session.user, userInfo: req.session.userInfo});
+			}
+		}
+	});
 }

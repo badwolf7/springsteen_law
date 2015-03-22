@@ -17,4 +17,19 @@ module.exports = function(){
 			});
 		});
 	});
+	app.get('/admin/get/user', function(req,res){
+		console.log(req.query);
+		MongoClient.connect('mongodb://127.0.0.1:27017/springsteen-law', function(err, db){
+			if(err) throw err;
+			var collection = db.collection('users');
+			collection.find({'userId':req.query.uId}).toArray(function(err, user){
+				if(err) throw err;
+				console.log(user);
+				console.log('')
+				console.log('')
+				req.session.userInfo = user[0];
+				res.json(req.session.userInfo);
+			});
+		});
+	});
 }
