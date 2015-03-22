@@ -60,9 +60,9 @@ window.onload = function(){
 	var screenHeight = $(window).height();
 	var footerHeight = $('footer').height();
 	var heightMin = screenHeight - footerHeight;
-	var catcher = footerTop - heightMin + 29;
+	var catcher = footerTop - heightMin + 6;
 	var screenTop = '';
-	var dashNavLock = footerTop - dashNavHeight - footerHeight - 34;
+	var dashNavLock = footerTop - dashNavHeight - footerHeight - 47;
 
 	function windowTop(){
 		screenTop = $(window).scrollTop();
@@ -70,11 +70,13 @@ window.onload = function(){
 		if(screenTop >= catcher){
 			$('#dash aside').css({
 				'position': 'absolute',
-				'top': dashNavLock
+				'transition':'top .5s ease',
+				'top': dashNavLock+'px'
 			});
 		}else{
 			$('#dash aside').css({
 				'position': 'fixed',
+				'transition':'top .5s ease',
 				'top': 'auto'
 			});
 		}
