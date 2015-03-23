@@ -1,8 +1,10 @@
 # Springsteen Law
+## Peace of Mind During Your Difficult Times
 
 [Staging: Springsteen Law](http://hollyspringsteen.com/creations/springsteen-law/index)
 
-### Holly Springsteen
+### Contributors:
+#### Holly Springsteen
 [hollyspringsteen.com](https://hollyspringsteen.com)
 
 ---
