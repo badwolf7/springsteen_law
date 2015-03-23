@@ -28,3 +28,5 @@ The goal of this project is to not only provide an informational site for curren
 - EJS
 - RequireJS
 - MongoDB
+
+![screenshot](http://res.cloudinary.com/hollyspringsteen/image/upload/v1427150799/Springsteen_Law_t02p1j.png "Landing Page Screenshot")

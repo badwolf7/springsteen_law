@@ -42,9 +42,15 @@ window.onload = function(){
 		}
 	});
 	$('.fa-minus').click(function(){
-		// minimize message
-		$('#newMsg').addClass('minified');
-		$('#newMsg section').addClass('minified');
+		if($('#newMsg').hasClass('minified')){
+			// full size message
+			$('#newMsg').removeClass('minified');
+			$('#newMsg section').removeClass('minified');
+		}else{
+			// minimize message
+			$('#newMsg').addClass('minified');
+			$('#newMsg section').addClass('minified');
+		}
 		go--;
 	});
 	
@@ -67,6 +73,10 @@ window.onload = function(){
 	$('.forgot').click(function(){
 		$('#login-modal').modal('hide');
 	});
+	// focus on username when modal is visible
+	$('#login-modal').on('shown.bs.modal',function(){
+		$('input[name="login[user]"]').focus();
+	})
 
 	// TIME CONVERSIONS
 	// convert for individual user login times
