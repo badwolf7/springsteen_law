@@ -7,6 +7,8 @@
 	width: 100%
 	z-index: 990
 	background: rgba(22,22,22,.01)
+	&.minified
+		height: 0
 	section
 		width: 45%
 		position: fixed
@@ -16,22 +18,38 @@
 		background: $snowWhite
 		display: none
 		box-shadow: 0 -1px 3px 0 rgba(22,22,22,.22)
+		transition: width .5s ease
+		&.minified
+			width: 20%
+			z-index: 991
+			.msg-header
+				p
+					cursor: pointer
+			.msg-body
+				height: 0
 		.msg-header
 			p
-				background: $gray
+				background: $textBlack
 				padding: 5px 15px
 				color: $snowWhite
 				margin: 0
+				font-size: .9em
+				cursor: default
 				i.fa
 					float: right
-					margin-top: 4px
+					margin: 3px 5px 0
 					color: rgba(220,224,230,.45)
 					transition: color .35s ease
 					cursor: pointer
+					&.fa-close
+						margin-right: 0
+					&.fa-minus
+						padding-top: 4px
 					&:hover
 						color: rgba(220,224,230,.95)
 				
 		.msg-body
+			transition: height .5s ease
 			input.form-control, textarea
 				background: $snowWhite
 			input.form-control

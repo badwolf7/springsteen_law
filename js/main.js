@@ -17,9 +17,21 @@ window.onload = function(){
 		$('#newMsg section').hide(400);
 	});
 	$('.openNewMsg').click(function(){
+		$('#newMsg section form')[0].reset();
+		$('#newMsg').removeClass('minified');
+		$('#newMsg section').removeClass('minified');
 		$('#newMsg').show(500);
 		$('#newMsg section').show(600);
 		$('input[name=to]').focus();
+	});
+	$('#newMsg .msg-header p:not(i.fa-close)').click(function(){
+		if($('#newMsg').hasClass('minified')){
+			$('#newMsg').removeClass('minified');
+			$('#newMsg section').removeClass('minified');
+		}else{
+			$('#newMsg').addClass('minified');
+			$('#newMsg section').addClass('minified');
+		}
 	});
 
 	// Login Fail Modal Check
