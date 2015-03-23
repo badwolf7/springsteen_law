@@ -7,16 +7,8 @@ window.onload = function(){
 
 
 	// New Message
-	$('#newMsg').click(function(e){
-		if(e.target !== this) return;
-		$('#newMsg').hide(500);
-		$('#newMsg section').hide(400);
-	});
-	$('#newMsg section .fa-close').click(function(){
-		$('#newMsg').hide(500);
-		$('#newMsg section').hide(400);
-	});
 	$('.openNewMsg').click(function(){
+		// open a new message
 		$('#newMsg section form')[0].reset();
 		$('#newMsg').removeClass('minified');
 		$('#newMsg section').removeClass('minified');
@@ -24,15 +16,43 @@ window.onload = function(){
 		$('#newMsg section').show(600);
 		$('input[name=to]').focus();
 	});
+	// function to close/remove new message
+	function closeMsg(){
+		$('#newMsg').hide(500);
+		$('#newMsg section').hide(400);
+	}
+	$('#newMsg').click(function(e){
+		// close the message
+		if(e.target !== this) return;
+		closeMsg();
+	});
+	$('#newMsg section .fa-close').click(function(){
+		// close the message
+		closeMsg();
+	});
+	
 	$('#newMsg .msg-header p:not(i.fa-close)').click(function(){
+		// click on the msg header
 		if($('#newMsg').hasClass('minified')){
+			// if minified un-minify
 			$('#newMsg').removeClass('minified');
 			$('#newMsg section').removeClass('minified');
 		}else{
+			// if msg shown minify
 			$('#newMsg').addClass('minified');
 			$('#newMsg section').addClass('minified');
 		}
 	});
+	// Set the message title to subject
+	$('#newMsg form input[name=subject]').keyup(function(){
+		console.log($(this).val());
+		if($(this).val() == ''){
+			// default value for no subject
+			$('#newMsg .msg-header p span').text("New Message");
+		}else{
+			$('#newMsg .msg-header p span').text($(this).val());
+		}
+	})
 
 	// Login Fail Modal Check
 	if($('.modal .loginmsg').text() != '' && $('.modal .loginmsg').text() != 'Login success'){
