@@ -30,5 +30,8 @@ var ajax = function(){
 			}
 		});
 	}
+	$('section.messages table.messages tr').click(function(){
+		var msgId = $(this).attr('msgId');
+	});
 }
 ajax();

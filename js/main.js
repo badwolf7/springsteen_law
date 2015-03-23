@@ -5,18 +5,92 @@ window.onload = function(){
 	$('header svg path[fill="#2B4C7E"]').attr('fill','#567EBB');
 	$('footer svg path[fill="#2B4C7E"]').attr('fill','#567EBB');
 
+
+	// New Message
+	$('#newMsg').click(function(e){
+		if(e.target !== this) return;
+		$('#newMsg').hide(500);
+		$('#newMsg section').hide(400);
+	});
+	$('#newMsg section .fa-close').click(function(){
+		$('#newMsg').hide(500);
+		$('#newMsg section').hide(400);
+	});
+	$('.openNewMsg').click(function(){
+		$('#newMsg').show(500);
+		$('#newMsg section').show(600);
+		$('input[name=to]').focus();
+	});
+
 	// Login Fail Modal Check
 	if($('.modal .loginmsg').text() != '' && $('.modal .loginmsg').text() != 'Login success'){
 		$('#login-modal').modal('show');
 	}
+	// oh no, I forgot my password
 	$('.forgot').click(function(){
 		$('#login-modal').modal('hide');
 	});
 
+	// TIME CONVERSIONS
+	// convert for individual user login times
 	if($('#dash').hasClass('user-dash')){
 		var dateTime = new Date($('.dateTime').text());
 		$('.dateTime').text(dateTime);
 	}
+
+	// convert for msg sent times
+	var msgdt;
+	for(var x=0;x<$('table.messages tr').length;x++){
+		x++;
+		msgdt = new Date($('table.messages tr:nth-child('+x+') .dateTime').text());
+		msgdt_month = msgdt.getMonth();
+		msgdt_date = msgdt.getDate();
+		msgdt_year = msgdt.getFullYear();
+		msgdt_hour = msgdt.getHours();
+		msgdt_min = msgdt.getMinutes();
+		switch(msgdt_month){
+			case 0:
+				msgdt_month = 'January';
+				break;
+			case 1:
+				msgdt_month = 'February';
+				break;
+			case 2:
+				msgdt_month = 'March';
+				break;
+			case 3:
+				msgdt_month = 'April';
+				break;
+			case 4:
+				msgdt_month = 'May';
+				break;
+			case 5:
+				msgdt_month = 'June';
+				break;
+			case 6:
+				msgdt_month = 'July';
+				break;
+			case 7:
+				msgdt_month = 'August';
+				break;
+			case 8:
+				msgdt_month = 'September';
+				break;
+			case 9:
+				msgdt_month = 'October';
+				break;
+			case 10:
+				msgdt_month = 'November';
+				break;
+			case 11:
+				msgdt_month = 'December';
+				break;
+		}
+		msgdt_str = msgdt_month+' '+msgdt_date+' | '+msgdt_hour+":"+msgdt_min
+		$('table.messages tr:nth-child('+x+') .dateTime').text(msgdt_str);
+		x--;
+	}
+
 
 	// NAV
 	function navCheck(){
@@ -62,6 +136,7 @@ window.onload = function(){
 	var dashNavTop = $('#dash aside').offset();
 	var dashNavHeight = $('#dash aside').height();
 	var screenHeight = $(window).height();
+	var docHeight = $(document).height();
 	var footerHeight = $('footer').height();
 	var heightMin = screenHeight - footerHeight;
 	var catcher = footerTop - heightMin + 6;
@@ -69,20 +144,22 @@ window.onload = function(){
 	var dashNavLock = footerTop - dashNavHeight - footerHeight - 47;
 
 	function windowTop(){
-		screenTop = $(window).scrollTop();
+		if(docHeight > 800){
+			screenTop = $(window).scrollTop();
 
-		if(screenTop >= catcher){
-			$('#dash aside').css({
-				'position': 'absolute',
-				'transition':'top .5s ease',
-				'top': dashNavLock+'px'
-			});
-		}else{
-			$('#dash aside').css({
-				'position': 'fixed',
-				'transition':'top .5s ease',
-				'top': 'auto'
-			});
+			if(screenTop >= catcher){
+				$('#dash aside').css({
+					'position': 'absolute',
+					'transition':'top .5s ease',
+					'top': dashNavLock+'px'
+				});
+			}else{
+				$('#dash aside').css({
+					'position': 'fixed',
+					'transition':'top .5s ease',
+					'top': 'auto'
+				});
+			}
 		}
 	}
 
@@ -102,7 +179,11 @@ window.onload = function(){
 			pageName = '';
 			break;
 		case 'dash':
-			pageName = 'user/'+pageName;
+			if($('main').hasClass('user-dash')){
+				pageName = '/admin/user';
+			}else{
+				pageName = 'user/'+pageName;
+			}
 			break;
 	}
 	var current = $("header nav ul li a[href='/"+pageName+"']");

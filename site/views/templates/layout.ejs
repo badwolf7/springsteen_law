@@ -69,6 +69,8 @@
 			<%- body %>
 
 		</div> <!-- wrapper -->
+
+		<% include newMsg %>
 		
 		<footer>
 			<% include logo %>
@@ -142,6 +144,10 @@
 		<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 
 		<!-- JAVASCRIPT -->
+		<script>
+			var currentUser = <%- JSON.stringify(user) %>;
+			console.log(currentUser);
+		</script>
 		<script src="/assets/js/ejs.js"></script>
 		<script src="/assets/js/ajax.js"></script>
 		<script src="/assets/js/main.js"></script>

@@ -28,6 +28,7 @@ module.exports = function(){
 		hash = sha1(pass+'shhh_its_a_secret'+user).toString();
 		console.log(user);
 		console.log(hash);
+		now = moment().format()
 
 		MongoClient.connect('mongodb://127.0.0.1:27017/springsteen-law', function(err, db){
 			if(err) throw err;

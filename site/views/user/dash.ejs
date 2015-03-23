@@ -3,10 +3,6 @@
 <main id="dash" class="dash col-xs-12">
 	
 	<% include ../templates/dash-nav %>
-	<script>
-		var currentUser = <%- JSON.stringify(user) %>;
-		console.log(currentUser);
-	</script>
 
 	<section class="data col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3">
 		<% if(user.type == 'client'){ %>
@@ -52,10 +48,23 @@
 		</section>
 		<% }else{ %>
 		<section class="messages admin">
-			<h2>Messages</h2>
+			<h2>Messages <small><a class="openNewMsg btn btn-danger">Compose</a></small></h2>
+			<% if(user.msgs.length == 0){ %>
 			<div>
 				<p class="preview-default text-center">No Messages</p>
 			</div>
+			<% }else{ %>
+			<table class="messages table table-condensed table-hover table-striped">
+				<tbody>
+					<% for(var l=0;l<user.msgs.length;l++){ %>
+					<tr msgId="<%= user.msgs[l].id %>">
+						<td class="col-md-3"><%= user.msgs[l].from %></td>
+						<td class="col-md-7"><%= user.msgs[l].subject %> <small class="text-muted"> <%= user.msgs[l].message %></small></td>
+						<td class="dateTime col-md-2"><%= user.msgs[l].sent %></td>
+					</tr>
+					<% } %>
+			</table>
+			<% } %>
 		</section>
 		<section class="users admin">
 			<h2>Clients <small><a href=""><i class="fa fa-user-plus"></i> Add Client</a></small></h2>
@@ -71,13 +80,13 @@
 						<p><%= users_list[i].description %></p>
 					</div>
 					<input type="hidden" class="user_id" value="<%= users_list[i].userId %>">
-					<section class="col-md-4">
+					<section class="col-md-4 text-center">
 						<p><i class="fa fa-envelope-o"></i> <%= users_list[i].email %></p>
 					</section>
 					<% if(users_list[i].address.home){ %>
-					<section class="col-md-4">
+					<section class="col-md-4 text-center">
 						<i class="fa fa-home fa-2x" style="vertical-align: top;"></i> 
-						<address style="display:inline-block;"><%= users_list[i].address.home.street1 %><br>
+						<address class="text-left" style="display:inline-block;"><%= users_list[i].address.home.street1 %><br>
 							<% if(users_list[i].address.home.street2 != ''){ %>
 							<%= users_list[i].address.home.street2 %><br>
 							<% } %>
@@ -85,7 +94,7 @@
 						</address>
 					</section>
 					<% } %>
-					<section class="col-md-4">
+					<section class="col-md-4 text-center">
 						<p><i class="fa fa-phone"></i> <%= users_list[i].phone %></p>
 					</section>
 					<p style="visibility:hidden;">.</p>
