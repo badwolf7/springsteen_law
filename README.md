@@ -4,8 +4,7 @@
 [Staging: Springsteen Law](http://hollyspringsteen.com/creations/springsteen-law/index)
 
 ### Contributors:
-#### Holly Springsteen
-[hollyspringsteen.com](https://hollyspringsteen.com)
+#### Holly Springsteen - [badwolf7](http://www.github.com/badwolf7) - [hollyspringsteen.com](https://hollyspringsteen.com)
 
 ---
 
