@@ -1,6 +1,6 @@
 # Springsteen Law
 
-- [Staging: Springsteen Law](https://hollyspringsteen.com/creations/springsteen-law/index)
+[Staging: Springsteen Law](http://hollyspringsteen.com/creations/springsteen-law/index)
 
 ### Holly Springsteen
 [hollyspringsteen.com](https://hollyspringsteen.com)
