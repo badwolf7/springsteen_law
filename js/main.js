@@ -30,19 +30,24 @@ window.onload = function(){
 		// close the message
 		closeMsg();
 	});
-	
-	$('#newMsg .msg-header p:not(i.fa-close)').click(function(){
-		// click on the msg header
-		if($('#newMsg').hasClass('minified')){
-			// if minified un-minify
+
+	var go = 1; // go to check state of minimizing for click status
+	$('.minified .msg-header').click(function(){
+		// make minified message full size
+		if(go){
 			$('#newMsg').removeClass('minified');
 			$('#newMsg section').removeClass('minified');
 		}else{
-			// if msg shown minify
-			$('#newMsg').addClass('minified');
-			$('#newMsg section').addClass('minified');
+			go++;
 		}
 	});
+	$('.fa-minus').click(function(){
+		// minimize message
+		$('#newMsg').addClass('minified');
+		$('#newMsg section').addClass('minified');
+		go--;
+	});
+	
 	// Set the message title to subject
 	$('#newMsg form input[name=subject]').keyup(function(){
 		console.log($(this).val());
