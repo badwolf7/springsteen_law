@@ -21,10 +21,15 @@ window.onload = function(){
 		$('#newMsg').hide(500);
 		$('#newMsg section').hide(400);
 	}
+	function minMsg(){
+		// minimize message
+		$('#newMsg').addClass('minified');
+		$('#newMsg section').addClass('minified');
+	}
 	$('#newMsg').click(function(e){
 		// close the message
 		if(e.target !== this) return;
-		closeMsg();
+		minMsg();
 	});
 	$('#newMsg section .fa-close').click(function(){
 		// close the message
@@ -48,12 +53,25 @@ window.onload = function(){
 			$('#newMsg section').removeClass('minified');
 		}else{
 			// minimize message
-			$('#newMsg').addClass('minified');
-			$('#newMsg section').addClass('minified');
+			minMsg();
 		}
 		go--;
 	});
-	
+	$('.message-response').click(function(){
+		if($('.message-response').hasClass('min')){
+			$('.message-response').removeClass('min');
+			$('.message-response textarea').attr('placeholder',"What's your message");
+			console.log('responder');
+		}
+	});
+	$('.message-response textarea').focusout(function(){
+		if($('.message-response textarea').val() == ''){
+			$('.message-response').addClass('min');
+			$('.message-response textarea').attr('placeholder','Click to Reply');
+			console.log('responder out');
+		}
+	});
+
 	// Set the message title to subject
 	$('#newMsg form input[name=subject]').keyup(function(){
 		console.log($(this).val());
@@ -79,10 +97,65 @@ window.onload = function(){
 	})
 
 	// TIME CONVERSIONS
+	function convertMonth(m){
+		var month;
+		switch(m){
+			case 0:
+				month = 'January';
+				break;
+			case 1:
+				month = 'February';
+				break;
+			case 2:
+				month = 'March';
+				break;
+			case 3:
+				month = 'April';
+				break;
+			case 4:
+				month = 'May';
+				break;
+			case 5:
+				month = 'June';
+				break;
+			case 6:
+				month = 'July';
+				break;
+			case 7:
+				month = 'August';
+				break;
+			case 8:
+				month = 'September';
+				break;
+			case 9:
+				month = 'October';
+				break;
+			case 10:
+				month = 'November';
+				break;
+			case 11:
+				month = 'December';
+				break;
+		}
+		return month;
+	}
+
 	// convert for individual user login times
 	if($('#dash').hasClass('user-dash')){
 		var dateTime = new Date($('.dateTime').text());
-		$('.dateTime').text(dateTime);
+		var yyyy = dateTime.getFullYear();
+		var month = dateTime.getMonth();
+		month = convertMonth(month);
+		var dd = dateTime.getDay();
+		var hh = dateTime.getHours();
+		var mm = dateTime.getMinutes();
+		var ss = dateTime.getSeconds();
+		var date =  month+' '+dd+', '+yyyy
+		var time = '<span class="text-muted">&nbsp;&nbsp;&nbsp;'+hh+':'+mm+':'+ss+'</span>';
+		var date_str = date + time;
+		console.log(date_str);
+		$('.dateTime').text(date);
+		$('.dateTime').append(time);
 	}
 
 	// convert for msg sent times
@@ -91,48 +164,11 @@ window.onload = function(){
 		x++;
 		msgdt = new Date($('table.messages tr:nth-child('+x+') .dateTime').text());
 		msgdt_month = msgdt.getMonth();
+		msgdt_month = convertMonth(msgdt_month);
 		msgdt_date = msgdt.getDate();
 		msgdt_year = msgdt.getFullYear();
 		msgdt_hour = msgdt.getHours();
 		msgdt_min = msgdt.getMinutes();
-		switch(msgdt_month){
-			case 0:
-				msgdt_month = 'January';
-				break;
-			case 1:
-				msgdt_month = 'February';
-				break;
-			case 2:
-				msgdt_month = 'March';
-				break;
-			case 3:
-				msgdt_month = 'April';
-				break;
-			case 4:
-				msgdt_month = 'May';
-				break;
-			case 5:
-				msgdt_month = 'June';
-				break;
-			case 6:
-				msgdt_month = 'July';
-				break;
-			case 7:
-				msgdt_month = 'August';
-				break;
-			case 8:
-				msgdt_month = 'September';
-				break;
-			case 9:
-				msgdt_month = 'October';
-				break;
-			case 10:
-				msgdt_month = 'November';
-				break;
-			case 11:
-				msgdt_month = 'December';
-				break;
-		}
 		msgdt_str = msgdt_month+' '+msgdt_date+' | '+msgdt_hour+":"+msgdt_min
 		$('table.messages tr:nth-child('+x+') .dateTime').text(msgdt_str);
 		x--;
