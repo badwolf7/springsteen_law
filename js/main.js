@@ -158,11 +158,9 @@ window.onload = function(){
 		$('.dateTime').append(time);
 	}
 
+	var msgdt,msgdt_month,msgdt_month,msgdt_date,msgdt_year,msgdt_hour,msgdt_min,msgdt_str;
 	// convert for msg sent times
-	var msgdt;
-	for(var x=0;x<$('table.messages tr').length;x++){
-		x++;
-		msgdt = new Date($('table.messages tr:nth-child('+x+') .dateTime').text());
+	function msgTimeConvert(msgdt){
 		msgdt_month = msgdt.getMonth();
 		msgdt_month = convertMonth(msgdt_month);
 		msgdt_date = msgdt.getDate();
@@ -170,10 +168,19 @@ window.onload = function(){
 		msgdt_hour = msgdt.getHours();
 		msgdt_min = msgdt.getMinutes();
 		msgdt_str = msgdt_month+' '+msgdt_date+' | '+msgdt_hour+":"+msgdt_min
+	}
+	for(var x=0;x<$('table.messages tr').length;x++){
+		x++;
+		msgdt = new Date($('table.messages tr:nth-child('+x+') .dateTime').text());
+		msgTimeConvert(msgdt);
 		$('table.messages tr:nth-child('+x+') .dateTime').text(msgdt_str);
 		x--;
 	}
-
+	if($('main').hasClass('message')){
+		msgdt = new Date($('#message .dateTime').text());
+		msgTimeConvert(msgdt);
+		$('#message .dateTime').text(msgdt_str);
+	}
 
 	// NAV
 	function navCheck(){

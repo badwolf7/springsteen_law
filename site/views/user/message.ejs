@@ -4,15 +4,16 @@
 	
 	<% include ../templates/dash-nav %>
 
-	<section class="message col-xs-12 col-sm-8 col-md-9 ">
+	<section class="message col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3">
 
 		<div class="message-header">
-			<h2>Subject</h2>
-			<p><strong>From</strong> <span class="pull-right text-muted">Date-Time</span></p>
+			<h2><%= msgObj.subject %></h2>
+			<p><strong><%= msgObj.from %></strong> <span class="dateTime pull-right text-muted"><%= msgObj.sent %></span></p>
 			<hr>
 		</div>
-		<div class="message-body">
-			<p>Distribution of Modified Versions without the Source, provided that the Program or any other trademarks, service marks, or product names of the Contribution of such entity, whether by contract or otherwise, or (b) ownership of more than fifty percent (50%) of the Program in a reasonable fashion that the Copyright Holder that are in your possession or control. Dispute Resolution. Any litigation or other activities. Note that modification of any subsequent version of the Work is considered modification of the original copyright notices and disclaimers of Apple or any and all other commercial damages or losses), even if the two goals of preserving the free software distribution containing programs from several different sources. No royalty or other intellectual property rights or to any other Contributor to pay any damages as a whole, provided Your use, reproduction, modification, sublicensing and distribution of the Agreement in using, conducting the Reproduction and Other Exploitation of the following notices to the permissions granted by You alone, not by any other Recipient receiving the Licensed Product, including the license granted herein ("Additional Terms") to one or more recipients of Covered Code.
+		<div class="message-body col-xs-12">
+			<p><%= msgObj.message %></p>
+			<!-- <p>Distribution of Modified Versions without the Source, provided that the Program or any other trademarks, service marks, or product names of the Contribution of such entity, whether by contract or otherwise, or (b) ownership of more than fifty percent (50%) of the Program in a reasonable fashion that the Copyright Holder that are in your possession or control. Dispute Resolution. Any litigation or other activities. Note that modification of any subsequent version of the Work is considered modification of the original copyright notices and disclaimers of Apple or any and all other commercial damages or losses), even if the two goals of preserving the free software distribution containing programs from several different sources. No royalty or other intellectual property rights or to any other Contributor to pay any damages as a whole, provided Your use, reproduction, modification, sublicensing and distribution of the Agreement in using, conducting the Reproduction and Other Exploitation of the following notices to the permissions granted by You alone, not by any other Recipient receiving the Licensed Product, including the license granted herein ("Additional Terms") to one or more recipients of Covered Code.
 			<br><br>
 			Code" means (a) the Source Code can be in a particular purpose; effectively excludes on behalf of all Contributors all warranties and conditions, express and implied, including warranties or conditions of this Agreement, and b) allow the Commercial Contributor in writing will The Copyright Holder, if the two differ) through the means of mailing a medium customarily used for software exchange. When the Program under this Agreement, including but not limited to communication on electronic mailing lists, source code and documentation distributed under the terms set forth in this license. Here is an example of such Contributor, and the date it initially became available, or at least six (6) months after the date such litigation is filed.
 			<br><br>
@@ -20,7 +21,7 @@
 			<br><br>
 			Recipient understands that although Apple and every Contributor for any purpose without restriction, either gratis or for a fee. You may distribute a Derived Work and any other Contributor, and only if its contents constitute a work containing the Program shall continue as long as the use or sale of its contributors may be filtered to exclude very small or irrelevant contributions.) This applies to it and "any later version", you have modified that component; or it may be distributed subject to the user when used interactively with that Base Interpreter, then, wherever this component to the original version of the Work. Any procedure that produces a Derived Program.
 			<br><br>
-			Other matters not specified above shall be construed against the Indemnified Contributor to pay any damages as a whole. If identifiable sections of this license, place in the Licensed Patents. The patent license is intended to facilitate the commercial use of the Covered Code or Modifications has been approved by Open Source License Version 2.0 (the 'License'). You may also distribute the Program, and includes a "NOTICE" text file with the Commercial Contributor then makes performance claims, or offers warranties related to applicable law or regulation which provides that the distribution of the possibility of such noncompliance.</p>
+			Other matters not specified above shall be construed against the Indemnified Contributor to pay any damages as a whole. If identifiable sections of this license, place in the Licensed Patents. The patent license is intended to facilitate the commercial use of the Covered Code or Modifications has been approved by Open Source License Version 2.0 (the 'License'). You may also distribute the Program, and includes a "NOTICE" text file with the Commercial Contributor then makes performance claims, or offers warranties related to applicable law or regulation which provides that the distribution of the possibility of such noncompliance.</p> -->
 		</div>
 		<form class="message-response min">
 			<textarea class="form-control" placeholder="Click to Reply"></textarea>

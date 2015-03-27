@@ -1,55 +1,6 @@
 #dash
 	padding-top: 10px
-	aside
-		margin-top: 20px
-		box-shadow: -1px 0 3px 0 rgba(1,1,1,.5)
-		@media(max-width:$sm)
-			position: inherit
-		@media(min-width:$sm)
-			position: fixed
-		section
-			ul
-				li
-					margin: 7px 0
-					a
-						display: block
-						padding: 7px 0 7px 7px
-						transition: background .45s ease, color .45s ease
-						font-size: 1.1em
-						font-weight: 500
-						&[href="/user/dash"]
-							color: $black
-							&:hover
-								background: $white
-						&[href="/user/case-notes"]
-							color: $gray
-							&:hover
-								background: $gray
-								color: $white
-						&[href="/user/docs"]
-							color: $blue
-							&:hover
-								background: $blue
-								color: $white
-						&[href="/user/payments"]
-							color: $clover
-							&:hover
-								background: $atlantis
-						&[href="/user/messages"]
-							color: $accent
-							&:hover
-								background: $accent
-								color: $white
-						&[href="/admin/users"]
-							color: $gray
-							&:hover
-								background: $gray
-								color: $white
-						i
-							width: 7%
-			a.text-danger
-				display: inline-block
-				margin-bottom: 20px
+	
 	section.col-xs-12
 		section.admin, section.user
 			float: left

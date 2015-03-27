@@ -1,7 +1,8 @@
-<aside class="col-xs-12 col-sm-4 col-md-3">
+<aside class="dashNav col-xs-12 col-sm-4 col-md-3">
 	<section>
 		<h3><%= user.name.full %></h3>
 		<h4 class="text-muted"><%= user.username %></h4>
+		<input id="uId" type="hidden" value="<%= user.userId %>">
 	</section>
 	<hr>
 	<section>

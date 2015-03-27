@@ -53,6 +53,20 @@ module.exports = function(){
 		}
 	});
 
+	app.get('/user/message', function(req,res){
+		console.log('message');
+		if(req.session.user){
+			if(req.session.user.active === 1){
+				console.log(req.session.messageObj);
+				res.render('user/message', {message: req.session.msg, user: req.session.user, users_list: '', msgObj: req.session.messageObj});
+			}else{
+				res.redirect('/');
+			}
+		}else{
+			res.redirect('/');
+		}
+	});
+
 	app.get('/user/:page', function(req,res){
 		if(fs.existsSync('views/user/' + req.params.page + '.ejs')){
 			if(req.session.user){

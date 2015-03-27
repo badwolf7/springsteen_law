@@ -1,9 +1,13 @@
 #message
 	section
-		textarea
-			height: 225px
-			transition: height .35s ease
+		.message-body
+			margin-bottom: 20px
+			p
+				font-size: .9em
 		.message-response
+			textarea
+				height: 175px
+				transition: height .5s ease
 			.msgBar
 				padding: 10px 0
 				position: relative
@@ -11,6 +15,9 @@
 				margin-top:0
 				opacity: 1
 				transition: margin .45s ease, opacity .5s ease
+				textarea
+					height: 225px
+					transition: height .35s ease
 				.btn
 					display: inline-block
 					background: $blue
