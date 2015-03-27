@@ -1,4 +1,7 @@
 window.onload = function(){
+	// Initialize WSIWYG text editor
+	$('.redactor').redactor();
+
 	// Logo Colors
 	$('header svg path[fill="#606D80"]').attr('fill','#DCE0E6');
 	$('footer svg path[fill="#606D80"]').attr('fill','#DCE0E6');
@@ -22,6 +25,10 @@ window.onload = function(){
 		$('#newMsg section').hide(400);
 	}
 	function minMsg(){
+		if($('.message-response .redactor_redactor p').text() == ''){
+			$('.message-response .redactor_redactor p').text('Click to Reply');
+			$('.message-response .redactor_redactor p').addClass('text-muted');
+		}
 		// minimize message
 		$('#newMsg').addClass('minified');
 		$('#newMsg section').addClass('minified');
@@ -57,20 +64,48 @@ window.onload = function(){
 		}
 		go--;
 	});
+
+	// Default settings for redactor text - placeholder-ish
+	$('.message-response .redactor_redactor p').text('Click to Reply');
+	$('.message-response .redactor_redactor p').addClass('text-muted');
+
 	$('.message-response').click(function(){
+		console.log('1')
 		if($('.message-response').hasClass('min')){
+			console.log('2')
 			$('.message-response').removeClass('min');
-			$('.message-response textarea').attr('placeholder',"What's your message");
-			console.log('responder');
+			$('.message-response .redactor_redactor p').text('');
+			$('.message-response .redactor_redactor p').removeClass('text-muted');
+		}else if($('.message-response').hasClass('msg-footer') && $('.redactor_redactor p').text() == 'Click to Reply'){
+			console.log('3')
+			$('.message-response .redactor_redactor p').text('');
+			$('.message-response .redactor_redactor p').removeClass('text-muted');
 		}
 	});
-	$('.message-response textarea').focusout(function(){
+	function minMessage(){
+		console.log('4')
 		if($('.message-response textarea').val() == ''){
 			$('.message-response').addClass('min');
-			$('.message-response textarea').attr('placeholder','Click to Reply');
-			console.log('responder out');
+			$('.message-response .redactor_redactor p').text('Click to Reply');
+			$('.message-response .redactor_redactor p').addClass('text-muted');
 		}
-	});
+	}
+	if($('main').hasClass('message')){
+		$('body').click(function(e){
+			if(e.target.nodeName == 'P' || e.target.nodeName == 'DIV'){
+				console.log(e.target.className);
+				if(e.target.NodeName == 'P' && e.target.className == ''){
+					return;
+				}else if(e.target.nodeName == 'DIV' && e.target.className == 'redactor_redactor redactor_form-control redactor_editor'){
+					return;
+				}else{
+					minMessage();
+				}
+			}else{
+				minMessage();
+			}
+		});
+	}
 
 	// Set the message title to subject
 	$('#newMsg form input[name=subject]').keyup(function(){
