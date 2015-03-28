@@ -26,7 +26,7 @@ window.onload = function(){
 	}
 	function minMsg(){
 		if($('.message-response .redactor_redactor p').text() == ''){
-			$('.message-response .redactor_redactor p').text('Click to Reply');
+			$('.message-response .redactor_redactor p').text('Message');
 			$('.message-response .redactor_redactor p').addClass('text-muted');
 		}
 		// minimize message
@@ -66,7 +66,7 @@ window.onload = function(){
 	});
 
 	// Default settings for redactor text - placeholder-ish
-	$('.message-response .redactor_redactor p').text('Click to Reply');
+	$('.message-response .redactor_redactor p').text('Message');
 	$('.message-response .redactor_redactor p').addClass('text-muted');
 
 	$('.message-response').click(function(){
@@ -76,7 +76,7 @@ window.onload = function(){
 			$('.message-response').removeClass('min');
 			$('.message-response .redactor_redactor p').text('');
 			$('.message-response .redactor_redactor p').removeClass('text-muted');
-		}else if($('.message-response').hasClass('msg-footer') && $('.redactor_redactor p').text() == 'Click to Reply'){
+		}else if($('.message-response').hasClass('msg-footer') && $('.redactor_redactor p').text() == 'Message'){
 			console.log('3')
 			$('.message-response .redactor_redactor p').text('');
 			$('.message-response .redactor_redactor p').removeClass('text-muted');
@@ -86,7 +86,7 @@ window.onload = function(){
 		console.log('4')
 		if($('.message-response textarea').val() == ''){
 			$('.message-response').addClass('min');
-			$('.message-response .redactor_redactor p').text('Click to Reply');
+			$('.message-response .redactor_redactor p').text('Message');
 			$('.message-response .redactor_redactor p').addClass('text-muted');
 		}
 	}

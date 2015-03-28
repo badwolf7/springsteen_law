@@ -2249,7 +2249,7 @@ var RLANG = {
 				this.setBtnActive(key);
 				this.getBtn(key).addClass('dropact');
 
-				var left = this.getBtn(key).offset().left;
+				var left = this.getBtn(key).offset().left - 100;
 
 				if (this.opts.air)
 				{
@@ -2263,7 +2263,8 @@ var RLANG = {
 				}
 				else
 				{
-					var top = this.$toolbar.offset().top + 30;
+					var top = this.$toolbar.offset().top - 30 - $(dropdown).height();
+					console.log($(dropdown).height());
 					$(dropdown).css({ position: 'absolute', left: left + 'px', top: top + 'px' }).show();
 				}
 			}
